@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import com.api.rest.model.Product;
 import com.api.rest.service.ProductService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @RequestMapping(name = "/products")
+@PreAuthorize("hasRole('user_client_role') or hasRole('admin_client_role')")
 public class ProductController {
 
     @Autowired
